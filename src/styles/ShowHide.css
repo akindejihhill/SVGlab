@@ -1,0 +1,37 @@
+.show-hide{
+    display: block;
+    position : relative;
+    border : inset 2px;
+    padding : 0;
+}
+
+.show-hide-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin : 0;
+    padding: 0; 
+    background : var(--light-primary-color);
+    min-height : 20px;
+}
+
+.title{
+    vertical-align: middle;
+}
+
+.show-hide-toggle{
+    display : inline-block;
+    position: absolute;
+    left : 0px;
+    margin : 0;
+    height : 20px;
+    width : 20px;
+}
+
+.show-component{
+    display: block;
+}
+
+.hide-component{
+    display: none;
+}

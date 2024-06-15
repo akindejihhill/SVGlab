@@ -1,0 +1,250 @@
+#edit-container{
+    background-color: var(--dark-background-color);
+    color : var(--dark-primary-color);
+    margin : 0 0;
+    padding-top: 1px; /*if I don't have at least 1px top padding, 
+    the top margin of the first child element pushes this (parent)
+    container down, and you can see the background of this element's
+    parent through the gap.  
+    Stupid CSS behavior, but we gotta deal with it*/
+    padding-bottom: 15px;
+    font-size: 100%;
+}
+
+#edit-container a, #edit-container a:visited:hover{
+    color : var(--dark-link-color);
+}
+
+#edit-container a:visited, #edit-container a:hover{
+    color : var(--dark-visited-color);
+}
+
+.article-form{
+    min-height: 90vh;
+}
+
+
+/* h3.sandbox, h1.sandbox{
+    margin: 0 auto;
+} */
+
+#page-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--dark-overlay-color);
+    padding: 15px 0;
+    margin: 15px 0px;
+}
+
+#page-header p, #page-header h1{
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.warning-section{
+    background: rgb(255, 92, 119);
+    color: yellow;
+    margin-bottom: 20px;
+}
+
+.message-section{
+    background: rgb(25, 255, 29);
+    color: rgb(11, 75, 184);
+    margin-bottom: 20px;
+}
+
+input.category, input.title, select{
+    background-color: var(--dark-overlay-color);
+    color : var(--dark-primary-color);
+    border: 2px solid var(--dark-primary-color);
+    border-radius: 8px;
+    box-shadow: inset -1px -1px 5px var(--dark-primary-color);
+    font-size: 100%;
+    width: 70%;
+}
+
+#titleblock{
+    margin-right : 5%;
+    margin-bottom: 10px;  
+}
+
+#categoryblock{
+    margin-left: 5%;
+}
+
+#level
+{
+    width: 45%;
+    max-width : 300px;
+}
+
+/* A container for both the editor and preview boxes */
+#writing-section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 0;
+    padding-top:0px;
+    margin: 0;
+}
+
+#editor-section{
+    width : 50%;
+    min-width : 400px;
+}
+
+.editor {
+    display : block;
+    position: relative;
+    width : 100%;
+    color : var(--dark-primary-color);
+    border: 1px solid var(--dark-primary-color);
+    border-radius: 0px 0px 20px 20px;
+    box-shadow: 0 0 10px var(--dark-primary-color);
+    padding: 0 10px;
+    margin: 0;
+    margin-bottom: 20px;
+    overflow: clip;
+    background-color: var(--dark-overlay-color);
+}
+
+/* The text editing textarea input */
+.editor-input{
+    display : block;
+    width : 100%;
+    height : 400px;
+    color : var(--dark-primary-color);
+    padding: 0;
+    border: none;
+    margin: 0;
+    background-color: var(--dark-overlay-color);
+    font-size: 16px;
+    overflow: auto;
+    scrollbar-color: var(--dark-primary-color) var(--dark-overlay-color);
+    scrollbar-width: thin; 
+}
+
+/* The display box for the markdown preview */
+#preview {
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width : 40%;
+    height : 100vh ;
+    max-width: 40% ;
+    min-width: 400px;
+    margin: 0px;
+    border: 1px solid var(--dark-primary-color);
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--dark-primary-color);
+    font-size: 16px;
+    overflow: auto;
+    scrollbar-color: var(--dark-primary-color) var(--dark-overlay-color);
+    scrollbar-width: thin; 
+    color : black;
+    background-color: white;
+}
+
+#preview hr{
+    border-top: 1px solid var(--dark-primary-color);
+    border-bottom: 2px solid black;
+}
+
+/* The header with the label 'preview' is the top section of the display box */
+#preview-header{
+    position: absolute;
+    text-align: center;
+    top : 0;
+    left: 0;
+    border-radius: 8px 8px 0 0;
+    background-color: var(--dark-tertiary-color);
+    color : var(--dark-primary-color);
+    width: 100%;
+    height : 25px;
+    padding : 0;
+    margin : 0;
+    margin-bottom: 15px;
+    z-index: 10;
+}
+
+/* The content is put in this section of the display box */
+#preview .content {
+    padding: 0px 10px;
+}
+
+#preview .content img{
+    display: block;
+    max-width: 95%;
+    margin : 5px auto;
+    border: outset var(--dark-overlay-color) 7px;
+}
+
+/* This is the div returned from the mark down renderer component */
+.markdown-view{
+    display : block;
+    /* width : 95%; */
+    text-align: left;
+    margin : 0 auto;
+    overflow : inherit;
+    line-height: 1.3;
+}
+
+/* The box containing preformated code blocks */
+#preview .markdown-view pre{
+    display: block;
+    position: relative;
+    width: 90%;
+    max-width : 90%;
+    background-color: var(--dark-overlay-color);
+    margin : 5px auto;
+    padding : 5px;
+    border-radius: 16px;
+    border: solid 5px var(--dark-primary-color);
+    box-shadow: inset black 0px 0px 5px 0px ;
+    overflow: auto;
+    scrollbar-color: var(--dark-primary-color) var(--dark-overlay-color);
+    scrollbar-width: thin;
+}
+
+/*this is undo to the effects that the inline code box 
+ *has on the block code box*/
+#preview .markdown-view pre code{
+    border-radius: inherit;
+    box-shadow: none;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* An inline code box */
+#preview .markdown-view code{
+    position: relative;
+    box-shadow: inset var(--dark-secondary-color) 0px 0px 8px -1px;
+    border-radius: 4px;
+    color: var(--dark-link-color);
+    background-color: var(--dark-overlay-color);
+    font-size: 80%;
+    margin: 0 3px;
+    padding : 0.5% 2%;
+}
+
+/* The submit button clears its level */
+#button-area{
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    white-space: nowrap;
+}
