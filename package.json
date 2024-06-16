@@ -9,8 +9,8 @@
     "> 0.2%"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --base=/svglab",
+    "build": "vite build --base=/svglab",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest"

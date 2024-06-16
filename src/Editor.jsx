@@ -2,6 +2,12 @@ import {useEffect, useState, useRef } from "react";
 import ShowHide from './ShowHide';
 // import {releaseKey, insertText, shortcutKey} from './helperFunctions'; //work on this later
 
+import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/mode-html';
+import 'ace-builds/src-noconflict/mode-css';
+import 'ace-builds/src-noconflict/theme-github_dark';
+
 /**
  * SVG Code is edited here
  */
@@ -9,19 +15,28 @@ function CSSEditor({content, setContent}){
 
     const CSSAreaRef = useRef();
 
+    const [language, setLanguage] = useState('css');
+
     /**Work on these later, they go with the experemental helper functions*/
     // const [altPressed, setAltPressed] = useState(false);
     // const [ctrlPressed, setCtrlPressed] = useState(false);
 
-    function handleChange(evt) {
-        const value = evt.target.value;
-        setContent(value);
-        console.log(content);
+    function handleChange(newValue) {
+        setContent(newValue);
+        console.log(newValue);
     }
 
     return <div>
-        <label htmlFor="SVG-editor" className="visually-hidden">Content</label>
-        <textarea
+        <label htmlFor="CSS-editor" className="visually-hidden">Content</label>
+        <AceEditor
+            mode={language}
+            theme="github_dark"
+            editorProps={{ $blockScrolling: true }}
+            setOptions={{
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+                enableSnippets: true,
+            }}
             name="CSSCode"
             id="CSS-editor"
             className="editor-input"
@@ -40,21 +55,29 @@ function SVGEditor({content, setContent}){
 
     const SVGAreaRef = useRef();
 
+    const [language, setLanguage] = useState('html');
+
     /**Work on these later, they go with the experemental helper functions*/
     // const [altPressed, setAltPressed] = useState(false);
     // const [ctrlPressed, setCtrlPressed] = useState(false);
 
-    function handleChange(evt) {
-        const value = evt.target.value;
-        setContent(value);
-        console.log(content);
+    function handleChange(newValue) {
+        setContent(newValue);
+        console.log(newValue);
     }
-
 
 
     return <div>
         <label htmlFor="SVG-editor" className="visually-hidden">Content</label>
-        <textarea
+        <AceEditor
+            mode={language}
+            theme="github_dark"
+            editorProps={{ $blockScrolling: true }}
+            setOptions={{
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+                enableSnippets: true,
+            }}
             name="SVGCode"
             id="SVG-editor"
             className="editor-input"
@@ -72,20 +95,28 @@ function JSEditor({content, setContent}){
 
     const JSAreaRef = useRef();
 
+    const [language, setLanguage] = useState('javascript');
+
     /**Work on these later, they go with the experemental helper functions*/
     // const [altPressed, setAltPressed] = useState(false);
     // const [ctrlPressed, setCtrlPressed] = useState(false);
 
-    function handleChange(evt) {
-        const value = evt.target.value;
-        setContent(value);
-        console.log(content);
+    function handleChange(newValue) {
+        setContent(newValue);
+        console.log(newValue);
     }
-
 
     return <div>
         <label htmlFor="JS-editor" className="visually-hidden">Content</label>
-        <textarea
+        <AceEditor
+            mode={language}
+            theme="github_dark"
+            editorProps={{ $blockScrolling: true }}
+            setOptions={{
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+                enableSnippets: true,
+            }}
             name="JSCode"
             id="JS-editor"
             className="editor-input"
@@ -130,8 +161,8 @@ function Editor(){
 
     return <div>
         <div id="page-header">
-            <h1 className="sandbox" >SVG/HTML Sandbox: </h1>
-            <p>A place to quickly experement with SVG or HTML effects.</p>
+            <h1 className="sandbox" >SVG Lab: </h1>
+            <p>A sandbox to quickly experement with SVG or HTML effects.</p>
         </div>
         <div id="links">
             Tools: 
