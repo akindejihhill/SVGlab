@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import ShowHide from './ShowHide';
+import SandboxIframe from "./SandboxIframe";
 
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-javascript';
@@ -29,7 +30,7 @@ function CodeEditor({content, setContent, language}){
             name={language+"-editor"}
             id={language+"-editor"}
             className="editor-input"
-            placeholder={language + " code goes in here."}
+            placeholder={language === "html"? "SVG or HTML code goes in here" : language + " code goes in here."}
             value={content}
             onChange={handleChange}
         />
@@ -41,29 +42,11 @@ function Editor(){
     const [cssContent, setCssContent] = useState("");
     const [svgContent, setSvgContent] = useState("");
     const [jsContent, setJsContent] = useState("");
-    const [svg, setSvg] = useState("");
+    const [centered, setCentered] = useState(true);
 
-    useEffect(()=>{
-        const svgCode = "<style>" + cssContent + "</style>" + `\n` + svgContent + `\n`;
-        setSvg(svgCode);
-    },[cssContent, svgContent]);
-
-    //execute injected javascript code after the rest of the svg code has been rendered
-    useEffect(() => {
-        if (jsContent) {
-            const blob = new Blob([jsContent], { type: 'application/javascript' });
-            const scriptURL = URL.createObjectURL(blob);
-            const scriptEl = document.createElement('script');
-            scriptEl.src = scriptURL;
-            document.body.appendChild(scriptEl);
-    
-            // Clean up to avoid memory leaks
-            return () => {
-                URL.revokeObjectURL(scriptURL);
-                document.body.removeChild(scriptEl);
-            };
-        }
-    }, [jsContent]);
+    function switchOrientation(){
+        setCentered(!centered);
+    }
 
     return <div>
         <div id="page-header">
@@ -76,6 +59,12 @@ function Editor(){
                 <li><a href="https://iconly.io/tools/svg-cleaner">SVG cleaner</a></li>
                 <li><a href="https://svg2jsx.com/">SVG 2 JSX</a></li>
             </ul>
+            Links: 
+            <ul>
+                <li><a href="http://cerebro.homelinux.net/kb/posts/52">Article: SVG in React</a></li>
+                <li><a href="https://www.flaticon.com/">FlatIcon</a></li>
+                <li><a href="https://heroicons.com/">heroicons</a></li>
+            </ul>
         </div>
         <div id="writing-section" >
             <div id="editor-section">
@@ -84,9 +73,13 @@ function Editor(){
                 <ShowHide comp={<CodeEditor content={jsContent} setContent={setJsContent} language="javascript" />} compVisible={false} title="Edit JavaScript"/>
             </div>
 
-            <div className="outputsection" id="preview">
-                <div id="preview-header">Preview</div>
-                <div className="content" dangerouslySetInnerHTML={{ __html: svg }}>
+            <div className="outputsection" id="preview-container">
+                <div id="preview-header">
+                    <span>Preview</span>
+                    <span id="orentation-switch"><input type="checkbox" id="orientation" checked={centered} onChange={switchOrientation}/><label htmlFor="orientation">centered</label></span>
+                </div>
+                <div id="preview">
+                    <SandboxIframe css={cssContent} svg={svgContent} js={jsContent} height="90vh" centered={centered}/>
                 </div>
             </div>
         </div>

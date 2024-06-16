@@ -1,0 +1,4 @@
+iframe{
+    scrollbar-color: var(--dark-primary-color) var(--dark-overlay-color);
+    scrollbar-width: thin; 
+}
