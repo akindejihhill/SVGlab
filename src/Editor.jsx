@@ -131,7 +131,14 @@ function Editor(){
     return <div>
         <div id="page-header">
             <h1 className="sandbox" >SVG/HTML Sandbox: </h1>
-            <p> A place to quickly experement with with SVG or HTML effects.</p>
+            <p>A place to quickly experement with SVG or HTML effects.</p>
+        </div>
+        <div id="links">
+            Tools: 
+            <ul>
+                <li><a href="https://iconly.io/tools/svg-cleaner">SVG cleaner</a></li>
+                <li><a href="https://svg2jsx.com/">SVG 2 JSX</a></li>
+            </ul>
         </div>
         <div id="writing-section" >
             <div id="editor-section">

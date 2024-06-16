@@ -23,12 +23,7 @@
     min-height: 90vh;
 }
 
-
-/* h3.sandbox, h1.sandbox{
-    margin: 0 auto;
-} */
-
-#page-header{
+#page-header, #links{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,10 +33,28 @@
     margin: 15px 0px;
 }
 
+#links{
+    padding: 0;
+}
+
 #page-header p, #page-header h1{
     display: inline;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#links li{
+    float: left;
+    margin-right: 20px;
+}
+
+#links li:nth-child(1){
+    list-style-type: none;
+}
+
+#links ul{
+    /* list-style-type: circle; */
+
 }
 
 .warning-section{
@@ -125,6 +138,7 @@ input.category, input.title, select{
     background-color: var(--dark-overlay-color);
     font-size: 16px;
     overflow: auto;
+    white-space: nowrap;
     scrollbar-color: var(--dark-primary-color) var(--dark-overlay-color);
     scrollbar-width: thin; 
 }
@@ -136,7 +150,7 @@ input.category, input.title, select{
     justify-content: center;
     position: relative;
     width : 40%;
-    height : 100vh ;
+    height : 80vh ;
     max-width: 40% ;
     min-width: 400px;
     margin: 0px;
@@ -178,12 +192,6 @@ input.category, input.title, select{
     padding: 0px 10px;
 }
 
-#preview .content img{
-    display: block;
-    max-width: 95%;
-    margin : 5px auto;
-    border: outset var(--dark-overlay-color) 7px;
-}
 
 /* This is the div returned from the mark down renderer component */
 .markdown-view{
