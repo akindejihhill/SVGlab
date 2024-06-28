@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import ShowHide from './ShowHide';
 import SandboxIframe from "./SandboxIframe";
 
@@ -12,10 +12,9 @@ function CodeEditor({content, setContent, language}){
 
     function handleChange(newValue) {
         setContent(newValue);
-        console.log(newValue);
     }
 
-    return <div>
+    return <div className="ace-editor">
         <label htmlFor={language+"-editor"} className="visually-hidden">Content</label>
         <AceEditor
             mode={language}

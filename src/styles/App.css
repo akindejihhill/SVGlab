@@ -1,4 +1,4 @@
-#edit-container{
+#svglab-container{
     background-color: var(--dark-background-color);
     color : var(--dark-primary-color);
     margin : 0 0;
@@ -11,15 +11,15 @@
     font-size: 100%;
 }
 
-#edit-container a, #edit-container a:visited:hover{
+#svglab-container a, #svglab-container a:visited:hover{
     color : var(--dark-link-color);
 }
 
-#edit-container a:visited, #edit-container a:hover{
+#svglab-container a:visited, #svglab-container a:hover{
     color : var(--dark-visited-color);
 }
 
-.article-form{
+.svglab-form{
     min-height: 90vh;
 }
 
@@ -127,21 +127,17 @@ input.category, input.title, select{
     background-color: var(--dark-overlay-color);
 }
 
-/* The text editing textarea input */
-.editor-input{
-    display : block;
+
+.ace-editor{
+    position: relative;
     width : 100%;
-    height : 400px;
-    color : var(--dark-primary-color);
-    padding: 0;
-    border: none;
-    margin: 0;
-    background-color: var(--dark-overlay-color);
-    font-size: 16px;
-    overflow: auto;
-    white-space: nowrap;
-    scrollbar-color: var(--dark-primary-color) var(--dark-overlay-color);
-    scrollbar-width: thin; 
+    background-color: red;
+}
+
+#html-editor, #css-editor, #javascript-editor
+{
+    position: relative;
+    width : 100% !important ;
 }
 
 #preview-container{
